@@ -10,24 +10,19 @@ export class TimerComponent implements OnInit {
   seconds: number;
   minutes: number;
   hours: number;
+  parsedTime: Date;
   output: string;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.minutes = Math.trunc(this.time / 60);
-    this.seconds = this.time - this.minutes * 60;
-    this.hours = Math.trunc(this.minutes / 60);
-    this.minutes = this.minutes - this.hours * 60;
-    this.output = `${this.hours}:${this.minutes} ${this.seconds}s`;
-    let intervalId: number = setInterval(() => {
+    this.parsedTime = new Date(null);
+    this.parsedTime.setSeconds(this.time);
+    let id = setInterval(() => {
       this.time -= 1;
-      console.log(this.time);
-
-      this.output = `${this.hours}:${this.minutes} ${this.seconds}s`;
-      this.decreaseTimer();
+      this.output = `${new Date(this.time * 1000).toISOString().substr(11, 8)}`;
       if (this.time == 0) {
-        clearInterval(intervalId);
+        clearInterval(id);
       }
     }, 1000);
   }
