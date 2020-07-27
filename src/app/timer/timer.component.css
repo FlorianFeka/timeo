@@ -1,0 +1,13 @@
+.timer-container {
+  display: flex;
+  flex-direction: row;
+  padding: 2em;
+}
+
+h1 + button {
+  margin-left: 10px;
+}
+
+button + button {
+  margin-left: 10px;
+}
