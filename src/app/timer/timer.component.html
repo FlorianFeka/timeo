@@ -1,12 +1,13 @@
 <div class="timer-container">
-  <h1 class="timer">{{ output }}</h1>
-  <button mat-mini-fab color="primary">
+  <h1>{{ timeOutput }}</h1>
+  <button mat-mini-fab color="primary" (click)="pauseTimer()">
     <mat-icon aria-hidden="false">pause</mat-icon>
   </button>
-  <button mat-mini-fab color="primary">
+  <button mat-mini-fab color="primary" (click)="startTimer()">
     <mat-icon aria-hidden="false">play_arrow</mat-icon>
   </button>
-  <button mat-mini-fab color="primary">
-    <mat-icon aria-hidden="false">stop</mat-icon>
+  <button mat-mini-fab color="primary" (click)="initTimer()">
+    <mat-icon aria-hidden="false">replay</mat-icon>
   </button>
+  <h1>{{ nameOutput }}</h1>
 </div>

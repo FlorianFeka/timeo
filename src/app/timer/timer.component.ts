@@ -7,29 +7,48 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
   @Input() private time: number;
+  @Input() private name: string;
+  backupTime: number;
   parsedTime: Date;
-  intervalId: number;
-  output: string;
+  intervalId: number = null;
+  timeOutput: string;
+  nameOutput: string;
 
   constructor() {}
 
   ngOnInit(): void {
+    this.backupTime = this.time;
+    this.nameOutput = this.name;
+    this.setTime(this.time);
+    this.startTimer();
+  }
+
+  setTime(time: number) {
     this.parsedTime = new Date(null);
-    this.parsedTime.setSeconds(this.time);
-    this.startInterval();
+    this.parsedTime.setSeconds(time);
   }
 
-  startInterval() {
-    this.intervalId = setInterval(() => {
-      this.time -= 1;
-      this.output = `${new Date(this.time * 1000).toISOString().substr(11, 8)}`;
-      if (this.time == 0) {
-        this.stopInterval();
-      }
-    }, 1000);
+  startTimer() {
+    if (this.intervalId == null) {
+      this.intervalId = setInterval(() => {
+        this.time -= 1;
+        this.timeOutput = `${new Date(this.time * 1000)
+          .toISOString()
+          .substr(11, 8)}`;
+        if (this.time == 0) {
+          this.pauseTimer();
+        }
+      }, 1000);
+    }
   }
 
-  stopInterval() {
+  pauseTimer() {
     clearInterval(this.intervalId);
+    this.intervalId = null;
+  }
+
+  initTimer() {
+    this.time = this.backupTime;
+    this.setTime(this.time);
   }
 }
