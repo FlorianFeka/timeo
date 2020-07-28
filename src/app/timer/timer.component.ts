@@ -17,6 +17,7 @@ export class TimerComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.time = this.time - 1;
     this.backupTime = this.time;
     this.nameOutput = this.name;
     this.setTime(this.time);
@@ -25,6 +26,9 @@ export class TimerComponent implements OnInit {
 
   setTime(time: number) {
     this.parsedTime = new Date(null);
+    this.timeOutput = `${new Date(this.time * 1000)
+      .toISOString()
+      .substr(11, 8)}`;
     this.parsedTime.setSeconds(time);
   }
 
@@ -50,5 +54,7 @@ export class TimerComponent implements OnInit {
   initTimer() {
     this.time = this.backupTime;
     this.setTime(this.time);
+    this.pauseTimer();
+    this.startTimer();
   }
 }
