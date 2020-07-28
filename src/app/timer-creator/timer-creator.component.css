@@ -2,12 +2,20 @@
   padding: 2em;
 }
 
-.timer-selector {
-  flex-direction: row;
+.timer-form {
+  align-items: center;
 }
 
-mat-form-field {
+.timer-container {
+  margin-right: 15px;
+}
+
+.time-input {
   width: 80px;
+}
+
+.timer-name-input {
+  width: 100%;
 }
 
 mat-form-field + mat-form-field {

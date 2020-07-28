@@ -11,10 +11,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TimerComponent } from './timer/timer.component';
 import { TimerCreatorComponent } from './timer-creator/timer-creator.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, TimerComponent, TimerCreatorComponent],
   imports: [
+    ReactiveFormsModule,
     MatSliderModule,
     MatIconModule,
     MatButtonModule,
