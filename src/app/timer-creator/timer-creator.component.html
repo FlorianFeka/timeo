@@ -32,6 +32,9 @@
           <mat-label>Timer Name</mat-label>
           <input formControlName="timerName" matInput type="text" />
         </mat-form-field>
+        <mat-error *ngIf="!valid">
+          Please enter at least seconds
+        </mat-error>
       </div>
       <button mat-mini-fab color="primary" type="submit">
         <mat-icon aria-hidden="false">add</mat-icon>

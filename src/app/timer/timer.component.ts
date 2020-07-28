@@ -8,9 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TimerComponent implements OnInit {
   @Input() private time: number;
   @Input() private name: string;
-  backupTime: number;
-  parsedTime: Date;
-  intervalId: number = null;
+  private backupTime: number;
+  private parsedTime: Date;
+  private intervalId: number = null;
   timeOutput: string;
   nameOutput: string;
 

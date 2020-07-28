@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Timer } from './model/Timer';
+
 @Component({
   selector: 'timeo-root',
   templateUrl: './app.component.html',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'timeo';
+  timerList: Timer[] = [];
 
-  createTimer(time) {}
+  createTimer(timerData: Timer) {
+    this.timerList.push(timerData);
+    console.log(timerData);
+  }
 }
