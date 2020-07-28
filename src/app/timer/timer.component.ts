@@ -52,9 +52,13 @@ export class TimerComponent implements OnInit {
   }
 
   initTimer() {
-    this.time = this.backupTime;
-    this.setTime(this.time);
+    this.resetTimer();
     this.pauseTimer();
     this.startTimer();
+  }
+
+  resetTimer() {
+    this.time = this.backupTime;
+    this.setTime(this.time);
   }
 }
