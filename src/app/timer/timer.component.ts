@@ -13,11 +13,11 @@ export class TimerComponent implements OnInit {
   private intervalId: number = null;
   timeOutput: string;
   nameOutput: string;
+  paused: boolean;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.time = this.time - 1;
     this.backupTime = this.time;
     this.nameOutput = this.name;
     this.setTime(this.time);
@@ -34,6 +34,7 @@ export class TimerComponent implements OnInit {
 
   startTimer() {
     if (this.intervalId == null) {
+      this.paused = false;
       this.intervalId = setInterval(() => {
         this.time -= 1;
         this.timeOutput = `${new Date(this.time * 1000)
@@ -47,6 +48,7 @@ export class TimerComponent implements OnInit {
   }
 
   pauseTimer() {
+    this.paused = true;
     clearInterval(this.intervalId);
     this.intervalId = null;
   }
@@ -60,5 +62,9 @@ export class TimerComponent implements OnInit {
   resetTimer() {
     this.time = this.backupTime;
     this.setTime(this.time);
+    if (!this.paused) {
+      this.pauseTimer();
+      this.startTimer();
+    }
   }
 }
