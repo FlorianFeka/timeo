@@ -4,6 +4,10 @@
   padding: 2em;
 }
 
+h1 {
+  margin-top: 4px;
+}
+
 h1 + button {
   margin-left: 10px;
 }
