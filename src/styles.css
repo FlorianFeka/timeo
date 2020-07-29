@@ -18,3 +18,7 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.center {
+  align-items: center;
+}

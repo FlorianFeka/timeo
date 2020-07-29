@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewRef, ViewChild } from '@angular/core';
 
 import { Timer } from './model/Timer';
+import { TimerComponent } from './timer/timer.component';
 
 @Component({
   selector: 'timeo-root',
@@ -14,5 +15,10 @@ export class AppComponent {
   createTimer(timerData: Timer) {
     this.timerList.push(timerData);
     console.log(timerData);
+  }
+
+  deleteTimer(index: number) {
+    console.log(index);
+    delete this.timerList[index];
   }
 }
