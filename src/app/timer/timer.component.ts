@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TimerCreatorComponent } from '../timer-creator/timer-creator.component';
 
 @Component({
   selector: 'timeo-timer',
@@ -6,15 +7,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./timer.component.css'],
 })
 export class TimerComponent implements OnInit {
-  @Input() private time: number;
-  @Input() private index: number;
-  @Input() private name: string;
-
-  @Output() deleteNotify: EventEmitter<number> = new EventEmitter();
-
   private backupTime: number;
   private parsedTime: Date;
   private intervalId: number = null;
+
+  public time: number;
+  public index: number;
+  public name: string;
+  public id: number;
+  public parentRef: TimerCreatorComponent;
 
   timeOutput: string;
   nameOutput: string;
@@ -75,6 +76,6 @@ export class TimerComponent implements OnInit {
 
   deleteTimer() {
     this.pauseTimer();
-    this.deleteNotify.emit(this.index);
+    this.parentRef.removeTimer(this.id);
   }
 }

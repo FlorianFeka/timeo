@@ -1,13 +1,3 @@
 <div class="container">
-  <timeo-timer-creator (notifyTime)="createTimer($event)"></timeo-timer-creator>
-  <div class="center">
-    <timeo-timer
-      *ngFor="let timer of timerList; index as i"
-      [time]="timer.time"
-      [name]="timer.name"
-      [index]="i"
-      #i
-      (deleteNotify)="deleteTimer($event)"
-    ></timeo-timer>
-  </div>
+  <timeo-timer-creator></timeo-timer-creator>
 </div>

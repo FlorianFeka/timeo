@@ -1,44 +1,50 @@
 <div class="timer-creator">
-  <form [formGroup]="timerForm" (ngSubmit)="onSubmit(timerForm.value)">
-    <div class="row timer-form">
-      <div class="column timer-container">
-        <div class="row">
-          <mat-form-field class="time-input">
-            <mat-label>Hours</mat-label>
-            <input formControlName="hours" matInput type="number" min="0" />
+  <div class="center">
+    <form [formGroup]="timerForm" (ngSubmit)="onSubmit(timerForm.value)">
+      <div class="row timer-form">
+        <div class="column timer-container">
+          <div class="row">
+            <mat-form-field class="time-input">
+              <mat-label>Hours</mat-label>
+              <input formControlName="hours" matInput type="number" min="0" />
+            </mat-form-field>
+            <mat-form-field class="time-input">
+              <mat-label>Minutes</mat-label>
+              <input
+                formControlName="minutes"
+                matInput
+                type="number"
+                min="0"
+                max="59"
+              />
+            </mat-form-field>
+            <mat-form-field class="time-input">
+              <mat-label>Seconds</mat-label>
+              <input
+                formControlName="seconds"
+                matInput
+                type="number"
+                min="0"
+                max="59"
+              />
+            </mat-form-field>
+          </div>
+          <mat-form-field class="timer-name-input">
+            <mat-label>Timer Name</mat-label>
+            <input formControlName="timerName" matInput type="text" />
           </mat-form-field>
-          <mat-form-field class="time-input">
-            <mat-label>Minutes</mat-label>
-            <input
-              formControlName="minutes"
-              matInput
-              type="number"
-              min="0"
-              max="59"
-            />
-          </mat-form-field>
-          <mat-form-field class="time-input">
-            <mat-label>Seconds</mat-label>
-            <input
-              formControlName="seconds"
-              matInput
-              type="number"
-              min="0"
-              max="59"
-            />
-          </mat-form-field>
+          <mat-error *ngIf="!valid">
+            Please enter at least seconds
+          </mat-error>
         </div>
-        <mat-form-field class="timer-name-input">
-          <mat-label>Timer Name</mat-label>
-          <input formControlName="timerName" matInput type="text" />
-        </mat-form-field>
-        <mat-error *ngIf="!valid">
-          Please enter at least seconds
-        </mat-error>
+        <button mat-mini-fab color="primary" type="submit">
+          <mat-icon aria-hidden="false">add</mat-icon>
+        </button>
       </div>
-      <button mat-mini-fab color="primary" type="submit">
-        <mat-icon aria-hidden="false">add</mat-icon>
-      </button>
-    </div>
-  </form>
+    </form>
+  </div>
+</div>
+
+<div class="center">
+  <ng-template #viewContainerRef></ng-template>
 </div>
