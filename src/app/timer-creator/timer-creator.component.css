@@ -10,6 +10,12 @@
   margin-right: 15px;
 }
 
+.timer-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .time-input {
   width: 80px;
 }
